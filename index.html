@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHL B2B-DC Engagement Platform | INTRINSICA & DNA KEY</title>
+    <style>
+        :root {
+            --color-primary: #21808D;
+            --color-primary-hover: #1D7480;
+            --color-primary-active: #1A6873;
+            --color-secondary: rgba(94, 82, 64, 0.12);
+            --color-background: #FCFCF9;
+            --color-surface: #FFFFFD;
+            --color-text: #134252;
+            --color-text-secondary: #626C71;
+            --color-border: rgba(94, 82, 64, 0.2);
+            --color-success: #21808D;
+            --color-teal: #32B8C6;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            --radius-base: 8px;
+            --radius-lg: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #1F2121;
+                --color-surface: #262828;
+                --color-text: #F5F5F5;
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-primary: #32B8C6;
+                --color-border: rgba(119, 124, 124, 0.3);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-3) 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tab-btn {
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            color: var(--color-text);
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-base);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .pathway {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stage-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .stage-number {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .stage-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-description {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .calculator {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: 1rem;
+            background: var(--color-background);
+            color: var(--color-text);
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .btn {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .results {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--color-bg-3);
+            border-radius: var(--radius-base);
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .pillar-card {
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pillar-card:nth-child(1) { border-color: #3B82F6; }
+        .pillar-card:nth-child(2) { border-color: #10B981; }
+        .pillar-card:nth-child(3) { border-color: #F59E0B; }
+        .pillar-card:nth-child(4) { border-color: #EF4444; }
+        .pillar-card:nth-child(5) { border-color: #8B5CF6; }
+        .pillar-card:nth-child(6) { border-color: #06B6D4; }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .pillar-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-description {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .assessment {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            max-width: 700px;
+            margin: 2rem auto;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .likert-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .likert-option input[type="radio"] {
+            display: none;
+        }
+
+        .likert-label {
+            display: block;
+            padding: 0.75rem 0.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .likert-option input[type="radio"]:checked + .likert-label {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .likert-label:hover {
+            border-color: var(--color-primary);
+        }
+
+        .score-display {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--color-bg-3);
+            border-radius: var(--radius-base);
+            text-align: center;
+        }
+
+        .score-display.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .score-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .score-interpretation {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+        }
+
+        .timeline-item {
+            text-align: center;
+        }
+
+        .timeline-label {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .cpib-flow {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--color-background);
+            border-radius: var(--radius-base);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        .flow-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .flow-content h4 {
+            margin-bottom: 0.25rem;
+            color: var(--color-primary);
+        }
+
+        .flow-content p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--color-text-secondary);
+        }
+
+        .key-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-box {
+            background: var(--color-surface);
+            border-left: 4px solid var(--color-primary);
+            border-radius: var(--radius-base);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .likert-scale {
+                flex-direction: column;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-5));
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid var(--color-border);
+        }
+
+        .highlight-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .data-table th {
+            background: var(--color-secondary);
+            font-weight: 700;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CHL | INTRINSICA</div>
+                <nav class="nav">
+                    <a class="nav-link" onclick="scrollToSection('dc-pathway')">DC Pathway</a>
+                    <a class="nav-link" onclick="scrollToSection('patient-pathway')">Patient Pathway</a>
+                    <a class="nav-link" onclick="scrollToSection('imperium')">BE IMPERIUM</a>
+                    <a class="nav-link" onclick="scrollToSection('calculators')">Tools</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Empowered Health Ecosystem</h1>
+            <p>Transform chiropractic care through DNA-guided precision health, INTRINSICA platform intelligence, and the BE IMPERIUM archetype framework</p>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('dc')">🏥 DC Pathway</button>
+                <button class="tab-btn" onclick="switchTab('patient')">👤 Patient Pathway</button>
+                <button class="tab-btn" onclick="switchTab('imperium')">🔷 BE IMPERIUM</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="dc" class="tab-content active">
+        <section class="section" id="dc-pathway">
+            <div class="container">
+                <h2 class="section-title">🏥 DC Pathway: The Empowered Practice Architect</h2>
+                <p class="section-subtitle">Transform your practice through DNA-guided precision health and sustainable economic growth</p>
+
+                <div class="pathway">
+                    <div class="stage-card">
+                        <div class="stage-number">I</div>
+                        <h3 class="stage-title">Trigger Stimuli</h3>
+                        <p class="stage-description"><strong>Professional Goals:</strong> Build a successful, economically thriving practice with happy patients</p>
+                        <p class="stage-description"><strong>Personal Vision:</strong> Live a fulfilled, healthier, happier life with work-life balance</p>
+                        <p class="stage-description"><strong>Market Position:</strong> Transition from traditional supplementer to precision health leader</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">II</div>
+                        <h3 class="stage-title">Reward</h3>
+                        <p class="stage-description"><strong>INTRINSICA Platform:</strong> Real-time health dashboards, AI-driven risk scoring (90% accuracy), automated patient protocols</p>
+                        <p class="stage-description"><strong>DNA KEY Supplements:</strong> BBC technology with 120+ bioavailable compounds, 40% DC margins</p>
+                        <p class="stage-description"><strong>Revenue Enhancement:</strong> 18-28% practice revenue increase, $89,724 average annual DC revenue</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">III</div>
+                        <h3 class="stage-title">Call To Action</h3>
+                        <p class="stage-description"><strong>Patient Identification:</strong> Screen patients using INTRINSICA risk assessment (5 min per patient)</p>
+                        <p class="stage-description"><strong>Pitch Framework:</strong> Present DNA-guided approach with personalized genetic reports</p>
+                        <p class="stage-description"><strong>Monitoring Protocol:</strong> Weekly biosensor reviews, monthly comprehensive dashboards</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">IV</div>
+                        <h3 class="stage-title">Investment</h3>
+                        <p class="stage-description"><strong>Clinical Outcomes:</strong> 25% faster patient recovery, 40% pain reduction, 80% retention rate</p>
+                        <p class="stage-description"><strong>Economic Impact:</strong> 257:1 LTV:CAC ratio, 0.31-month payback period</p>
+                        <p class="stage-description"><strong>Practice Valuation:</strong> 30-40% increase through ECP integration</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">Key DC Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">73</div>
+                            <div class="metric-label">Year 1 Practices</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$6.5M</div>
+                            <div class="metric-label">Year 1 Revenue</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">257:1</div>
+                            <div class="metric-label">LTV:CAC Ratio</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$89,724</div>
+                            <div class="metric-label">Avg DC Revenue/Year</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4,318</div>
+                            <div class="metric-label">Year 4 Practices</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$387.3M</div>
+                            <div class="metric-label">Year 4 Revenue</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calculators">
+                    <h3 class="section-title">💰 Interactive ROI Calculator</h3>
+                    <div class="calculator">
+                        <div class="form-group">
+                            <label class="form-label">Practice Size</label>
+                            <select id="practiceSize" class="form-select">
+                                <option value="small">Small (300 patients)</option>
+                                <option value="medium" selected>Medium (500 patients)</option>
+                                <option value="large">Large (800 patients)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Current Annual Revenue ($)</label>
+                            <input type="number" id="currentRevenue" class="form-input" value="400000" min="0" step="10000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Expected ECP Conversion Rate (%)</label>
+                            <input type="number" id="conversionRate" class="form-input" value="30" min="0" max="100" step="5">
+                        </div>
+
+                        <button class="btn" onclick="calculateROI()">Calculate Practice ROI</button>
+
+                        <div id="roiResults" class="results">
+                            <div class="result-item">
+                                <span class="result-label">ECP Revenue Enhancement:</span>
+                                <span class="result-value" id="ecpRevenue">$0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">New Total Revenue:</span>
+                                <span class="result-value" id="totalRevenue">$0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Revenue Increase:</span>
+                                <span class="result-value" id="revenueIncrease">0%</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Annual Profit Increase (40% margin):</span>
+                                <span class="result-value" id="profitIncrease">$0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Practice Valuation Boost (3x multiple):</span>
+                                <span class="result-value" id="valuationBoost">$0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-features">
+                    <div class="feature-box">
+                        <h4 class="feature-title">INTRINSICA Platform</h4>
+                        <ul class="feature-list">
+                            <li>Real-time health data dashboards</li>
+                            <li>AI-driven patient risk scoring</li>
+                            <li>91-100 health data integration score</li>
+                            <li>Automated patient protocols</li>
+                            <li>40-50% reduction in clinical decision time</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4 class="feature-title">DNA KEY Supplements</h4>
+                        <ul class="feature-list">
+                            <li>120 bioavailable vitamins, minerals, amino acids</li>
+                            <li>BBC technology for near-100% absorption</li>
+                            <li>Visible benefits in 14 days</li>
+                            <li>40% DC margins vs 30% Standard Process</li>
+                            <li>Gender-specific formulations</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4 class="feature-title">Economic Benefits</h4>
+                        <ul class="feature-list">
+                            <li>18-28% revenue enhancement</li>
+                            <li>257:1 LTV:CAC ratio</li>
+                            <li>0.31-month payback period</li>
+                            <li>30-40% practice valuation increase</li>
+                            <li>Predictable recurring revenue</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="patient" class="tab-content">
+        <section class="section" id="patient-pathway">
+            <div class="container">
+                <h2 class="section-title">👤 Patient Pathway: The Empowered Health Architect</h2>
+                <p class="section-subtitle">Design your optimal health trajectory through genetic understanding and precision nutrition</p>
+
+                <div class="pathway">
+                    <div class="stage-card">
+                        <div class="stage-number">I</div>
+                        <h3 class="stage-title">Trigger Stimuli</h3>
+                        <p class="stage-description"><strong>Career Enhancement:</strong> Invest in health for 40-year career longevity and $500K+ additional lifetime earnings</p>
+                        <p class="stage-description"><strong>Pain Relief:</strong> Achieve 40% faster pain reduction through DNA-guided intervention</p>
+                        <p class="stage-description"><strong>Life Fulfillment:</strong> Experience holistic wellness enabling full presence in relationships and purpose</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">II</div>
+                        <h3 class="stage-title">Reward</h3>
+                        <p class="stage-description"><strong>Personal Intelligence:</strong> Understand your genetic blueprint through INTRINSICA's real-time biosensor data</p>
+                        <p class="stage-description"><strong>Precision Supplements:</strong> DNA-matched BBC formulations with visible 14-day benefits</p>
+                        <p class="stage-description"><strong>Empowerment:</strong> Autonomous health decisions backed by genetic and biosensor data</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">III</div>
+                        <h3 class="stage-title">Call To Action</h3>
+                        <p class="stage-description"><strong>DC Pitch:</strong> Digest DNA-guided approach with personalized genetic insights</p>
+                        <p class="stage-description"><strong>Enrollment:</strong> 30-day trial with smart ring biosensor and genetic assessment</p>
+                        <p class="stage-description"><strong>Engagement:</strong> Weekly check-ins, monthly comprehensive reviews, community connection</p>
+                    </div>
+
+                    <div class="stage-card">
+                        <div class="stage-number">IV</div>
+                        <h3 class="stage-title">Investment</h3>
+                        <p class="stage-description"><strong>Health Metrics:</strong> 46% pain reduction, 24% sleep improvement, 40% faster recovery</p>
+                        <p class="stage-description"><strong>Autonomy:</strong> Informed health decisions through genetic literacy and real-time data</p>
+                        <p class="stage-description"><strong>Fulfillment:</strong> Energy for career, relationships, recreation; life satisfaction increase of 30%</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">Patient Outcome Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Faster Pain Relief</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">46%</div>
+                            <div class="metric-label">Pain Reduction Target</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">24%</div>
+                            <div class="metric-label">Sleep Quality Improvement</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">80%</div>
+                            <div class="metric-label">12-Month Retention</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$298</div>
+                            <div class="metric-label">Monthly Investment</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">$1,000+</div>
+                            <div class="metric-label">Value Delivered</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-title">🌟 Life Fulfillment Assessment</h3>
+                    <div class="assessment">
+                        <p style="text-align: center; margin-bottom: 2rem; color: var(--color-text-secondary);">Rate your agreement with each statement (1=Strongly Disagree, 5=Strongly Agree)</p>
+
+                        <div class="question">
+                            <div class="question-text">1. I have energy to engage fully in activities that matter to me</div>
+                            <div class="likert-scale">
+                                <div class="likert-option">
+                                    <input type="radio" name="q1" value="1" id="q1-1">
+                                    <label for="q1-1" class="likert-label">1<br>Strongly<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q1" value="2" id="q1-2">
+                                    <label for="q1-2" class="likert-label">2<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q1" value="3" id="q1-3">
+                                    <label for="q1-3" class="likert-label">3<br>Neutral</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q1" value="4" id="q1-4">
+                                    <label for="q1-4" class="likert-label">4<br>Agree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q1" value="5" id="q1-5">
+                                    <label for="q1-5" class="likert-label">5<br>Strongly<br>Agree</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <div class="question-text">2. My relationships have improved through better health and vitality</div>
+                            <div class="likert-scale">
+                                <div class="likert-option">
+                                    <input type="radio" name="q2" value="1" id="q2-1">
+                                    <label for="q2-1" class="likert-label">1<br>Strongly<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q2" value="2" id="q2-2">
+                                    <label for="q2-2" class="likert-label">2<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q2" value="3" id="q2-3">
+                                    <label for="q2-3" class="likert-label">3<br>Neutral</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q2" value="4" id="q2-4">
+                                    <label for="q2-4" class="likert-label">4<br>Agree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q2" value="5" id="q2-5">
+                                    <label for="q2-5" class="likert-label">5<br>Strongly<br>Agree</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <div class="question-text">3. I feel in control of my health trajectory, not at mercy of genetics or age</div>
+                            <div class="likert-scale">
+                                <div class="likert-option">
+                                    <input type="radio" name="q3" value="1" id="q3-1">
+                                    <label for="q3-1" class="likert-label">1<br>Strongly<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q3" value="2" id="q3-2">
+                                    <label for="q3-2" class="likert-label">2<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q3" value="3" id="q3-3">
+                                    <label for="q3-3" class="likert-label">3<br>Neutral</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q3" value="4" id="q3-4">
+                                    <label for="q3-4" class="likert-label">4<br>Agree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q3" value="5" id="q3-5">
+                                    <label for="q3-5" class="likert-label">5<br>Strongly<br>Agree</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <div class="question-text">4. My daily experience includes vitality, joy, and capability</div>
+                            <div class="likert-scale">
+                                <div class="likert-option">
+                                    <input type="radio" name="q4" value="1" id="q4-1">
+                                    <label for="q4-1" class="likert-label">1<br>Strongly<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q4" value="2" id="q4-2">
+                                    <label for="q4-2" class="likert-label">2<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q4" value="3" id="q4-3">
+                                    <label for="q4-3" class="likert-label">3<br>Neutral</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q4" value="4" id="q4-4">
+                                    <label for="q4-4" class="likert-label">4<br>Agree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q4" value="5" id="q4-5">
+                                    <label for="q4-5" class="likert-label">5<br>Strongly<br>Agree</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <div class="question-text">5. I'm optimistic about my health future over the next 5-10 years</div>
+                            <div class="likert-scale">
+                                <div class="likert-option">
+                                    <input type="radio" name="q5" value="1" id="q5-1">
+                                    <label for="q5-1" class="likert-label">1<br>Strongly<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q5" value="2" id="q5-2">
+                                    <label for="q5-2" class="likert-label">2<br>Disagree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q5" value="3" id="q5-3">
+                                    <label for="q5-3" class="likert-label">3<br>Neutral</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q5" value="4" id="q5-4">
+                                    <label for="q5-4" class="likert-label">4<br>Agree</label>
+                                </div>
+                                <div class="likert-option">
+                                    <input type="radio" name="q5" value="5" id="q5-5">
+                                    <label for="q5-5" class="likert-label">5<br>Strongly<br>Agree</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn" onclick="calculateFulfillment()">Calculate Fulfillment Score</button>
+
+                        <div id="fulfillmentScore" class="score-display">
+                            <div class="score-number" id="scoreValue">0</div>
+                            <div style="color: var(--color-text-secondary); margin-bottom: 1rem;">out of 40</div>
+                            <div class="score-interpretation" id="scoreInterpretation"></div>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-label">3 Months</div>
+                                    <div class="timeline-value" id="target3mo">20/40</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-label">6 Months</div>
+                                    <div class="timeline-value" id="target6mo">28/40</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-label">12 Months</div>
+                                    <div class="timeline-value" id="target12mo">35/40</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-features">
+                    <div class="feature-box">
+                        <h4 class="feature-title">Genetic Understanding</h4>
+                        <ul class="feature-list">
+                            <li>Personal genetic blueprint analysis</li>
+                            <li>MTHFR, VDR, COMT variant assessment</li>
+                            <li>Nutrient metabolism optimization</li>
+                            <li>Inflammation pathway insights</li>
+                            <li>Epigenetic aging targets</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4 class="feature-title">Real-Time Monitoring</h4>
+                        <ul class="feature-list">
+                            <li>Smart ring biosensor (HR, HRV, SpO2)</li>
+                            <li>Sleep quality tracking</li>
+                            <li>Activity and stress monitoring</li>
+                            <li>Digital health twin dashboard</li>
+                            <li>Early warning alerts</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4 class="feature-title">Measurable Outcomes</h4>
+                        <ul class="feature-list">
+                            <li>40% faster pain relief</li>
+                            <li>46% pain reduction at 12 weeks</li>
+                            <li>24% sleep quality improvement</li>
+                            <li>HRV increase from 32 to 55</li>
+                            <li>30% life satisfaction increase</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="imperium" class="tab-content">
+        <section class="section" id="imperium">
+            <div class="container">
+                <h2 class="section-title">🔷 BE IMPERIUM Archetype Integration</h2>
+                <p class="section-subtitle">The meta-framework connecting DC and Patient pathways through Control Perception to Influence Positive Behaviors (CPIB)</p>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🧬</div>
+                        <h3 class="pillar-title">Control DNA</h3>
+                        <p class="pillar-description">DCs control patient outcomes through DNA-guided protocols. Patients control health expression through genetics + behavior. Both see genetics as actionable blueprint.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🤝</div>
+                        <h3 class="pillar-title">Be Accepted</h3>
+                        <p class="pillar-description">DCs accepted as innovation leaders within profession. Patients accepted into health optimization community. Belonging addresses fundamental human need.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">⭐</div>
+                        <h3 class="pillar-title">Be Desired</h3>
+                        <p class="pillar-description">DCs desired as partners by patients seeking precision care. Patients desired as members of high-performing health community. Social proof mechanism.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">❤️</div>
+                        <h3 class="pillar-title">Be Loved</h3>
+                        <p class="pillar-description">DCs experience love from transformed patients. Patients experience love through self-care + community support. Fulfillment transcends transaction.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">💪</div>
+                        <h3 class="pillar-title">Be Empowered</h3>
+                        <p class="pillar-description">DCs empowered with data, technology, business model. Patients empowered with genetic knowledge, biosensor data, informed autonomy. Information = power.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🎯</div>
+                        <h3 class="pillar-title">Be Optimized</h3>
+                        <p class="pillar-description">DC practice optimized for revenue, outcomes, work-life balance. Patient health optimized through systemic cellular intervention. Both dimensions elevated.</p>
+                    </div>
+                </div>
+
+                <div class="cpib-flow">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--color-primary);">CPIB Operating System Flow</h3>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">🎯</div>
+                        <div class="flow-content">
+                            <h4>1. TRIGGER</h4>
+                            <p><strong>DC:</strong> "I want successful practice + happy patients"</p>
+                            <p><strong>Patient:</strong> "I want pain-free, energetic, fulfilled life"</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">🧠</div>
+                        <div class="flow-content">
+                            <h4>2. PERCEPTION CONTROL</h4>
+                            <p><strong>DC:</strong> "CHL provides proven differentiation model with 257:1 LTV:CAC"</p>
+                            <p><strong>Patient:</strong> "My genetics explain health patterns; I can optimize them"</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">🎬</div>
+                        <div class="flow-content">
+                            <h4>3. BEHAVIORAL INFLUENCE</h4>
+                            <p><strong>DC:</strong> Enroll in pilot, test protocol, measure revenue and outcomes</p>
+                            <p><strong>Patient:</strong> Wear biosensor, understand genetics, follow data-driven protocol</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">🏆</div>
+                        <div class="flow-content">
+                            <h4>4. REWARD</h4>
+                            <p><strong>DC:</strong> $89,724 avg revenue, 18-28% practice growth, +30% valuation</p>
+                            <p><strong>Patient:</strong> 46% pain reduction, 24% sleep improvement, energy transformation</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">👑</div>
+                        <div class="flow-content">
+                            <h4>5. ARCHETYPE IDENTIFICATION</h4>
+                            <p><strong>DC:</strong> "I'm an innovation leader redefining chiropractic medicine"</p>
+                            <p><strong>Patient:</strong> "I'm author of my health story, not victim of genetics"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 class="highlight-title">Virtuous Cycle: Double-Sided Transformation</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>DC Transformation</th>
+                                <th>Patient Transformation</th>
+                                <th>Ecosystem Effect</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Empowerment</strong></td>
+                                <td>Control over outcomes, economics, identity</td>
+                                <td>Control over genetic expression, health trajectory</td>
+                                <td>Mutual agency drives commitment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Outcomes</strong></td>
+                                <td>Better patient results + revenue growth</td>
+                                <td>Pain relief + energy + fulfillment</td>
+                                <td>Objective validation reinforces behavior</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Referrals</strong></td>
+                                <td>33% patient referral rate</td>
+                                <td>Advocate to friends/family</td>
+                                <td>Organic growth amplification</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Scaling</strong></td>
+                                <td>73→4,318 practices (Year 1→4)</td>
+                                <td>21,909→1.3M+ patients</td>
+                                <td>Community belonging + movement identity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Legacy</strong></td>
+                                <td>Professional thought leadership</td>
+                                <td>Health storytelling + empowerment</td>
+                                <td>Ecosystem transcends transaction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 class="section-title">Core Differentiation Principles</h3>
+                    <div class="key-features">
+                        <div class="feature-box">
+                            <h4 class="feature-title">Technology Excellence</h4>
+                            <ul class="feature-list">
+                                <li>INTRINSICA: 91-100 data integration score</li>
+                                <li>AI-driven risk scoring (90% accuracy)</li>
+                                <li>Real-time biosensor monitoring</li>
+                                <li>Digital health twin architecture</li>
+                                <li>Explainable AI recommendations</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-box">
+                            <h4 class="feature-title">Clinical Validation</h4>
+                            <ul class="feature-list">
+                                <li>BBC bioavailability near 100%</li>
+                                <li>14-day visible benefit timeline</li>
+                                <li>40% faster pain relief vs standard care</li>
+                                <li>25% faster patient recovery</li>
+                                <li>80% 12-month retention rate</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-box">
+                            <h4 class="feature-title">Economic Model</h4>
+                            <ul class="feature-list">
+                                <li>257:1 LTV:CAC ratio</li>
+                                <li>0.31-month payback period</li>
+                                <li>40% DC margin vs 30% competitors</li>
+                                <li>Recurring revenue predictability</li>
+                                <li>Practice valuation enhancement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Culminate Health Labs | INTRINSICA Platform & DNA KEY Supplements</p>
+            <p style="margin-top: 0.5rem;">Transforming Chiropractic Care Through DNA-Guided Precision Health</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Ready for GitHub deployment and Vercel hosting</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function calculateROI() {
+            const practiceSize = document.getElementById('practiceSize').value;
+            const currentRevenue = parseFloat(document.getElementById('currentRevenue').value);
+            const conversionRate = parseFloat(document.getElementById('conversionRate').value) / 100;
+
+            // Base ECP revenue by practice size
+            let baseECPRevenue;
+            switch(practiceSize) {
+                case 'small':
+                    baseECPRevenue = 45000;
+                    break;
+                case 'medium':
+                    baseECPRevenue = 90000;
+                    break;
+                case 'large':
+                    baseECPRevenue = 180000;
+                    break;
+            }
+
+            // Adjust for conversion rate (30% is baseline)
+            const ecpRevenue = baseECPRevenue * (conversionRate / 0.30);
+            const totalRevenue = currentRevenue + ecpRevenue;
+            const revenueIncrease = ((ecpRevenue / currentRevenue) * 100).toFixed(1);
+            const profitIncrease = ecpRevenue * 0.40; // 40% margin
+            const valuationBoost = profitIncrease * 3; // 3x multiple
+
+            // Display results
+            document.getElementById('ecpRevenue').textContent = '$' + ecpRevenue.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('totalRevenue').textContent = '$' + totalRevenue.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('revenueIncrease').textContent = revenueIncrease + '%';
+            document.getElementById('profitIncrease').textContent = '$' + profitIncrease.toLocaleString('en-US', {maximumFractionDigits: 0});
+            document.getElementById('valuationBoost').textContent = '$' + valuationBoost.toLocaleString('en-US', {maximumFractionDigits: 0});
+
+            document.getElementById('roiResults').classList.add('show');
+        }
+
+        function calculateFulfillment() {
+            let total = 0;
+            let completed = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    total += parseInt(selected.value);
+                    completed++;
+                }
+            }
+
+            if (completed < 5) {
+                alert('Please answer all 5 questions to calculate your fulfillment score.');
+                return;
+            }
+
+            document.getElementById('scoreValue').textContent = total;
+
+            // Interpretation
+            let interpretation;
+            if (total <= 15) {
+                interpretation = '🔴 Foundation Stage: Significant opportunity for health optimization through ECP';
+            } else if (total <= 25) {
+                interpretation = '🟡 Growth Stage: On path to fulfillment; continued ECP engagement recommended';
+            } else if (total <= 35) {
+                interpretation = '🟢 Thriving Stage: Experiencing meaningful health transformation; maintain momentum';
+            } else {
+                interpretation = '🌟 Optimal Stage: Exemplary fulfillment; consider becoming patient advocate';
+            }
+
+            document.getElementById('scoreInterpretation').textContent = interpretation;
+
+            // Target trajectory (baseline is current score)
+            const target3mo = Math.min(40, Math.round(total + (40 - total) * 0.3));
+            const target6mo = Math.min(40, Math.round(total + (40 - total) * 0.6));
+            const target12mo = Math.min(40, Math.round(total + (40 - total) * 0.85));
+
+            document.getElementById('target3mo').textContent = target3mo + '/40';
+            document.getElementById('target6mo').textContent = target6mo + '/40';
+            document.getElementById('target12mo').textContent = target12mo + '/40';
+
+            document.getElementById('fulfillmentScore').classList.add('show');
+        }
+
+        // Initialize with medium practice size calculation
+        window.addEventListener('load', function() {
+            // Set default practice size
+            document.getElementById('practiceSize').value = 'medium';
+        });
+    </script>
+</body>
+</html>
+
